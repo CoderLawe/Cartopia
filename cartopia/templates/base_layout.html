@@ -1,0 +1,93 @@
+{% load static  %}
+
+<html>
+
+<head>
+
+	  <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <title>Cartopia</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{% static 'beta.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+</head>
+
+<body>
+	
+	<!--Navbar Toggleable-->
+    <nav class="navbar navbar-toggleable-md  bg-primary navbar-inverse bg-inverse  ">
+      <a href="#" class="navbar-brand">CARTOPIA!</a>
+
+
+        <a class="nav-item nav-link active" href="{% url 'list'%}">Home</a>
+             	{% if user.is_authenticated %}
+
+            <form class = "logout-link" action = "{% url 'accounts:logout' %}" method="post">
+						{% csrf_token %}
+						<button type =  "submit"><h2>Logout</h2> </button>
+			</form>
+                    <a class="nav-item nav-link logout-link" href="{% url 'accounts:logout'%}">Logout</a>
+            <a class="nav-item nav-link" href="{% url 'create'%}">New Article</a>
+
+
+                {% else %}
+        <a class="nav-item nav-link" style='text-align:right;' href="{% url 'accounts:login'%}">Login</a>
+             <a class="nav-item nav-link" href="{% url 'accounts:signup'%}">Signup</a>
+
+                {% endif %}
+<!---
+      <div class="container">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="justify-content-center  collapse navbar-collapse" id="#mainNav">
+          <div class="navbar-nav">
+        <div class="justify-content  collapse navbar-collapse" id="#mainNav">
+
+            <a class="nav-item nav-link active" href="{% url 'list'%}">Home</a>
+             	{% if user.is_authenticated %}
+
+            <form class = "logout-link" action = "{% url 'accounts:logout' %}" method="post">
+						{% csrf_token %}
+						<button type =  "submit"><h2>Logout</h2> </button>
+			</form>
+                    <a class="nav-item nav-link logout-link" href="{% url 'accounts:logout'%}">Logout</a>
+            <a class="nav-item nav-link" href="{% url 'create'%}">New Article</a>
+                   
+
+                {% else %}
+
+             <a class="nav-item nav-link" href="{% url 'accounts:login'%}">Login</a>
+             <a class="nav-item nav-link" href="{% url 'accounts:signup'%}">Signup</a>
+
+                {% endif %}
+                </div>
+            </div>
+        </div>
+      </div>
+        -->
+    </nav>
+
+
+     <!---Carousel-->
+
+
+	
+
+		{% block content %}
+
+		{% endblock %}
+	 </div>
+	</body>
+</html>
